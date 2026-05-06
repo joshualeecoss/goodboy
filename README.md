@@ -1,2 +1,2 @@
-# goodboy
+# Goodboy (Metroidvania Project)
 
