@@ -5,7 +5,8 @@ var player : Player
 var next_state : PlayerState
 
 #region /// state references
-# reference to all other states
+@onready var idle: PlayerStateIdle = %Idle
+@onready var run: PlayerStateRun = %Run
 #endregion
 
 
@@ -25,7 +26,7 @@ func exit() -> void:
 
 
 # What happens when an input is pressed (or released)
-func handle_inputs(_event: InputEvent) -> PlayerState:
+func handle_input(_event: InputEvent) -> PlayerState:
 	return next_state
 
 

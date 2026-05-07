@@ -8,6 +8,7 @@ func init() -> void:
 
 # What happens when we enter this state
 func enter() -> void:
+	# Play Animation
 	pass
 
 
@@ -17,13 +18,17 @@ func exit() -> void:
 
 
 # What happens when an input is pressed (or released)
-func handle_inputs(_event: InputEvent) -> PlayerState:
+func handle_input(_event: InputEvent) -> PlayerState:
+	# Handle input
 	return next_state
 
 
 func process(_delta: float) -> PlayerState:
+	if player.direction.x != 0:
+		return run
 	return next_state
 
 
 func physics_process(_delta: float) -> PlayerState:
+	player.velocity.x = 0
 	return next_state
