@@ -28,6 +28,8 @@ func handle_input(_event: InputEvent) -> PlayerState:
 func process(_delta: float) -> PlayerState:
 	if player.direction.x != 0:
 		return run
+	elif player.direction.y > 0.5:
+		return crouch
 	return next_state
 
 
