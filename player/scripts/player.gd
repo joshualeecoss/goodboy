@@ -6,12 +6,14 @@ const DEBUG_JUMP_INDICATOR = preload("uid://b4y7d0fleyu56")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
-@onready var one_way_platform_raycast: RayCast2D = $OneWayPlatformRaycast
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlatformShapecast
 #endregion
 
 #region /// export variables
 @export var move_speed: float = 150
 #endregion
+
 
 #region /// State Machine Variables
 var states: Array[PlayerState]
@@ -20,6 +22,7 @@ var current_state: PlayerState:
 var previous_state: PlayerState:
 	get: return states[1]
 #endregion
+
 
 #region /// Standard Variables
 var direction: Vector2 = Vector2.ZERO
@@ -90,10 +93,19 @@ func change_state(new_state: PlayerState) -> void:
 
 
 func update_direction() -> void:
-	#var prev_direction: Vector2 = direction
+	var prev_direction: Vector2 = direction
+	
 	var x_axis = Input.get_axis("left", "right")
 	var y_axis = Input.get_axis("up", "down")
 	direction = Vector2(x_axis, y_axis)
+	
+	if prev_direction.x != direction.x:
+		if direction.x < 0:
+			sprite.flip_h = true
+			sprite.offset.x = -4
+		elif direction.x > 0:
+			sprite.flip_h = false
+			sprite.offset.x = 4
 	pass
 
 
