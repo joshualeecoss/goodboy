@@ -28,6 +28,7 @@ func enter() -> void:
 # What happens when we exit this state
 func exit() -> void:
 	player.gravity_multiplier = 1.0
+	buffer_timer = 0
 	pass
 
 
@@ -51,7 +52,7 @@ func process(delta: float) -> PlayerState:
 
 func physics_process(_delta: float) -> PlayerState:
 	if player.is_on_floor():
-		player.add_debug_indicator(Color.RED)
+		#player.add_debug_indicator(Color.RED)
 		if buffer_timer > 0:
 			return jump
 		return idle
