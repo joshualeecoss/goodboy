@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Goodboy"
-run/main_scene="uid://r8epvi6bfjmv"
+run/main_scene="uid://bpwyo5ucukdmo"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://dag0lrh8cpiyh"
 
